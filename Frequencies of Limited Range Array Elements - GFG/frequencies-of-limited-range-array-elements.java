@@ -61,13 +61,11 @@ class Solution{
         
         //traverse from 1 to N, store 0 if map doesn't has key
         //store value if the map has key
-        int key=1;
-        for(int i=0; i<N; i++){
-            if(map.containsKey(i+1))
-               arr[i] = map.get(i+1);
+        for(int key=0; key<N; key++){
+            if(map.containsKey(key+1))
+               arr[key] = map.get(key+1);
             else{
-               arr[i] = 0;
-               key++;
+               arr[key] = 0;
             }
         }
     }
