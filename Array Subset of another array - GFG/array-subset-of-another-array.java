@@ -47,24 +47,31 @@ class GFG {
 
 class Compute {
     public String isSubset( long a1[], long a2[], long n, long m) {
+        //create hashmap to store elements of a1[]
         HashMap<Long, Integer> map = new HashMap<>();
         
+        //traverse a1[] and store its elements as KEY
+        //and their frequency as VALUE
         for(int index=0; index<a1.length; index++){
             map.put(a1[index], map.getOrDefault(a1[index],0)+1);
         }
         
+        
+        //traverse a2[] for each element
         for(int index=0; index<a2.length; index++){
+            //if element is present in map, reduce its frequency by 1
             if(map.containsKey(a2[index])){
                 map.put(a1[index], map.get(a1[index])-1);
+                //if frequency of element becomes 0, remove it from map
                 if(map.get(a2[index]) <= 0){
                     map.remove(a2[index]);
                 }
             }
+            //if element not present in map, return "No"
             else{
                 return "No";
             }
         }
-        
         return"Yes";
     }
 }
