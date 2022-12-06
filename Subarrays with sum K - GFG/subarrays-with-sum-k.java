@@ -33,18 +33,22 @@ class Solution
     static int findSubArraySum(int arr[], int N, int sum)
     {
         HashMap<Integer,Integer> map = new HashMap<>();
-        map.put(0,1);
+        //map.put(0,1);
         int count = 0;
         
         int subarraySum = 0;
         for(int index=0; index<arr.length; index++){
             subarraySum += arr[index];
             
-            int removeSum = subarraySum - sum;
-            if(map.containsKey(removeSum)){
-                count += map.get(removeSum);
+            if(subarraySum == sum){
+                count++;
             }
             
+            int removeSum = subarraySum - sum;
+            if(map.get(removeSum) != null){
+                count += map.get(removeSum);
+            }
+
             map.put(subarraySum, map.getOrDefault(subarraySum,0)+1);
         }
         
